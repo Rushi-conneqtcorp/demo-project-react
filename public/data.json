@@ -1,0 +1,24 @@
+[
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john@example.com",
+      "phone": 9156015586,
+      "message": "I want admission in 10th standard."
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "jane@example.com",
+      "phone": "1234567890",
+      "message": "Please send me the contact details for admission process."
+    },
+    {
+        "id": 3,
+        "name": "devid Smith",
+        "email": "devid@example.com",
+        "phone": "342312344",
+        "message": "I want admission in 8th standard."
+      }
+  ]
+  
