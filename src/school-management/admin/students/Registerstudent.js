@@ -45,7 +45,6 @@ const Registerstudent = () => {
             alert("Registration Successful! ✅");
             dispatch(addStudent({ ...formData }));
             setFormData({ fullName: "", email: "", phone: "", password: "" });
-            console.log(formData);
         }
     };
 

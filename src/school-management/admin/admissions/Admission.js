@@ -1,7 +1,6 @@
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from "@mui/material";
 
 const Admission = ({ admissions }) => {
-  console.log(admissions)
   return (
     <TableContainer component={Paper} sx={{ marginTop: 5 }}>
       <Table>

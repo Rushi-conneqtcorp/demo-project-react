@@ -65,7 +65,7 @@ const AppBarWithLogout = ({ setIsLoggedIn }) => {
             sx={{ display: { xs: "block", sm: "none" } }}
             onClick={handleMenuOpen}
           >
-            <MenuIcon />
+          <MenuIcon />
           </IconButton>
 
           {/* Mobile Menu Items */}
