@@ -4,7 +4,7 @@ import { Container } from "@mui/material";
 import './App.css';
 
 import AppBarWithLogout from "./school-management/admin/appbar/AppBarWithLogout";
-import Login from "./school-management/Login";
+import Login from "./school-management/login/Login";
 import Registerstudent from './school-management/admin/students/Registerstudent';
 import Dashboard from "./school-management/admin/dashboard/Dashboard";
 import Teachers from "./school-management/admin/teachers/Teachers";

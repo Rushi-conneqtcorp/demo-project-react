@@ -57,9 +57,7 @@ const AppBarWithLogout = ({ setIsLoggedIn }) => {
           </Tabs>
 
           {/* Mobile Menu Icon */}
-          <IconButton
-            size="large"
-            edge="start"
+          <IconButton size="large" edge="start"
             color="inherit"
             aria-label="menu"
             sx={{ display: { xs: "block", sm: "none" } }}
