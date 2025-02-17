@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Container, TextField, IconButton, InputAdornment, Button, Typography, Box, Paper } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useNavigate  } from "react-router-dom";
 import messages from "../utility/messages";
 import labels from "../utility/labels";
 
 
-const Login = ({ setIsLoggedIn }) => {
+const Login = ({ setIsAuthenticated }) => {
     const [formData, setFormData] = useState({ username: "", password: "" });
     const [showPassword, setShowPassword] = useState(false);
     const [errors, setErrors] = useState({});
@@ -25,7 +25,6 @@ const Login = ({ setIsLoggedIn }) => {
         let tempErrors = {};
         tempErrors.username = formData.username ? "" : messages.loginUsername;
         tempErrors.password = formData.password.length >= 6 ? "" : messages.loginPassword;
-
         setErrors(tempErrors);
         return Object.values(tempErrors).every((x) => x === "");
     };
@@ -33,8 +32,7 @@ const Login = ({ setIsLoggedIn }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (validate()) {
-            localStorage.setItem("isLoggedIn", "true"); // Store login status
-            setIsLoggedIn(true);
+            setIsAuthenticated(true);
             alert(messages.loginSuccess);
             navigate("/dashboard");
         }

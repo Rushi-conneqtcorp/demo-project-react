@@ -12,12 +12,8 @@ const labels = {
     labelTeachers: "Teachers",
     labelAdmissions: "Admissions",
     labelSubjects: "Subjects",
-    newValueZero: 0,
-    newValueOne: 1,
-    newValueTwo: 2,
-    newValueThree: 3,
-    newValueFour: 4,
-
+    labelLogout: "Logout",
+  
     // Dashboard
     labelTotalStudents: "Total Students",
     labelTotalTeachers: "Total Teachers",
