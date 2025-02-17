@@ -6,6 +6,8 @@ import {
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useSelector, useDispatch } from 'react-redux';
 import { addStudent } from '../../redux/studentSlice';
+import labels from "../../utility/labels";
+import messages from "../../utility/messages";
 
 const Registerstudent = () => {
     const dispatch = useDispatch();
@@ -30,10 +32,10 @@ const Registerstudent = () => {
 
     const validate = () => {
         let tempErrors = {};
-        tempErrors.fullName = formData.fullName ? "" : "Full Name is required!";
-        tempErrors.email = /\S+@\S+\.\S+/.test(formData.email) ? "" : "Valid email is required!";
-        tempErrors.phone = formData.phone ? "" : "Phone Number is required!";
-        tempErrors.password = formData.password.length >= 6 ? "" : "Password must be at least 6 characters!";
+        tempErrors.fullName = formData.fullName ? "" : messages.studentFullName;
+        tempErrors.email = /\S+@\S+\.\S+/.test(formData.email) ? "" : messages.studentEmailID;
+        tempErrors.phone = formData.phone ? "" : messages.studentPhone;
+        tempErrors.password = formData.password.length >= 6 ? "" : messages.studentPassword;
 
         setErrors(tempErrors);
         return Object.values(tempErrors).every((x) => x === "");
@@ -42,7 +44,7 @@ const Registerstudent = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (validate()) {
-            alert("Registration Successful! ✅");
+            alert(messages.registrationSuccess);
             dispatch(addStudent({ ...formData }));
             setFormData({ fullName: "", email: "", phone: "", password: "" });
         }
@@ -52,12 +54,12 @@ const Registerstudent = () => {
         <Container sx={{ marginTop: 5 }}>
             <Paper elevation={10} sx={{ padding: 4, textAlign: "center", maxWidth: 400, margin: "auto" }}>
                 <Typography variant="h5" gutterBottom>
-                    Student Registration
+                    {labels.labelStudentRegistration}
                 </Typography>
                 <form onSubmit={handleSubmit}>
                     <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
                         <TextField
-                            label="Full Name"
+                            label={labels.labelStudentFullName}
                             variant="outlined"
                             name="fullName"
                             fullWidth
@@ -67,7 +69,7 @@ const Registerstudent = () => {
                             helperText={errors.fullName}
                         />
                         <TextField
-                            label="Email"
+                            label={labels.labelStudentEmail}
                             variant="outlined"
                             name="email"
                             fullWidth
@@ -77,7 +79,7 @@ const Registerstudent = () => {
                             helperText={errors.email}
                         />
                         <TextField
-                            label="Phone"
+                            label={labels.labelStudentPhone}
                             variant="outlined"
                             name="phone"
                             fullWidth
@@ -87,7 +89,7 @@ const Registerstudent = () => {
                             helperText={errors.phone}
                         />
                         <TextField
-                            label="Password"
+                            label={labels.labelStudentPassword}
                             variant="outlined"
                             type={showPassword ? "text" : "password"} // Toggle input type
                             name="password"
@@ -107,7 +109,7 @@ const Registerstudent = () => {
                             helperText={errors.password}
                         />
                         <Button type="submit" variant="contained" color="primary" fullWidth>
-                            Register
+                            {labels.btnRegister}
                         </Button>
                     </Box>
                 </form>
@@ -118,10 +120,10 @@ const Registerstudent = () => {
                     <Table>
                         <TableHead>
                             <TableRow sx={{ backgroundColor: "#1976d2" }}>
-                                <TableCell sx={{ color: "white" }}>Full Name</TableCell>
-                                <TableCell sx={{ color: "white" }}>Email</TableCell>
-                                <TableCell sx={{ color: "white" }}>Phone</TableCell>
-                                <TableCell sx={{ color: "white" }}>Password</TableCell>
+                                <TableCell sx={{ color: "white" }}>{labels.labelStudentFullName}</TableCell>
+                                <TableCell sx={{ color: "white" }}>{labels.labelStudentEmail}</TableCell>
+                                <TableCell sx={{ color: "white" }}>{labels.labelStudentPhone}</TableCell>
+                                <TableCell sx={{ color: "white" }}>{labels.labelStudentPassword}</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>

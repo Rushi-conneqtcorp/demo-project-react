@@ -1,4 +1,5 @@
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from "@mui/material";
+import labels from "../../utility/labels";
 
 const Admission = ({ admissions }) => {
   return (
@@ -6,11 +7,11 @@ const Admission = ({ admissions }) => {
       <Table>
         <TableHead>
           <TableRow sx={{ backgroundColor: "#1976d2" }}>
-            <TableCell sx={{ color: "white" }}>ID</TableCell>
-            <TableCell sx={{ color: "white" }}>Name</TableCell>
-            <TableCell sx={{ color: "white" }}>Email</TableCell>
-            <TableCell sx={{ color: "white" }}>Phone</TableCell>
-            <TableCell sx={{ color: "white" }}>Message</TableCell>
+            <TableCell sx={{ color: "white" }}>{labels.labelAdmissionID}</TableCell>
+            <TableCell sx={{ color: "white" }}>{labels.labelAdmissionName}</TableCell>
+            <TableCell sx={{ color: "white" }}>{labels.labelAdmissionEmail}</TableCell>
+            <TableCell sx={{ color: "white" }}>{labels.LabelAdmissionPhone}</TableCell>
+            <TableCell sx={{ color: "white" }}>{labels.labelAdmissionMessage}</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

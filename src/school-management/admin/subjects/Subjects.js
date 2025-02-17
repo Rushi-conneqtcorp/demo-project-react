@@ -5,6 +5,8 @@ import {
 } from "@mui/material";
 import { useSelector, useDispatch } from 'react-redux';
 import { addSubject } from '../../redux/subjectSlice';
+import labels from "../../utility/labels";
+import messages from "../../utility/messages";
 
 const Subjects = () => {
     const dispatch = useDispatch();
@@ -21,8 +23,8 @@ const Subjects = () => {
 
     const validate = () => {
         let tempErrors = {};
-        tempErrors.subjectName = formData.subjectName ? "" : "Subject Name is required!";
-        tempErrors.description = formData.description ? "" : "Description is required!";
+        tempErrors.subjectName = formData.subjectName ? "" : messages.subjectName;
+        tempErrors.description = formData.description ? "" : messages.subjectDescription;
 
         setErrors(tempErrors);
         return Object.values(tempErrors).every((x) => x === "");
@@ -31,7 +33,7 @@ const Subjects = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (validate()) {
-            alert("Registration Successful! ✅");
+            alert(messages.registrationSuccess);
             dispatch(addSubject({ ...formData }));
             setFormData({ subjectName: "", description: "" });
         }
@@ -41,12 +43,12 @@ const Subjects = () => {
         <Container maxWidth="sm" sx={{ marginTop: 5 }}>
             <Paper elevation={10} sx={{ padding: 4, textAlign: "center", maxWidth: 400, margin: "auto" }}>
                 <Typography variant="h5" gutterBottom>
-                    Add Subject
+                    {labels.labelAddSubject}
                 </Typography>
                 <form onSubmit={handleSubmit}>
                     <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
                         <TextField
-                            label="Subject Name"
+                            label={labels.labelSubjectName}
                             variant="outlined"
                             name="subjectName"
                             fullWidth
@@ -56,7 +58,7 @@ const Subjects = () => {
                             helperText={errors.subjectName}
                         />
                         <TextField
-                            label="Description"
+                            label={labels.labelSubjectDescription}
                             variant="outlined"
                             name="description"
                             fullWidth
@@ -67,7 +69,7 @@ const Subjects = () => {
                         />
 
                         <Button type="submit" variant="contained" color="primary" fullWidth>
-                            Add Subject
+                            {labels.btnAddSubject}
                         </Button>
                     </Box>
                 </form>
@@ -78,8 +80,8 @@ const Subjects = () => {
                     <Table>
                         <TableHead>
                             <TableRow sx={{ backgroundColor: "#1976d2" }}>
-                                <TableCell sx={{ color: "white" }}>Subject Name</TableCell>
-                                <TableCell sx={{ color: "white" }}>Description</TableCell>
+                                <TableCell sx={{ color: "white" }}>{labels.labelSubjectName}</TableCell>
+                                <TableCell sx={{ color: "white" }}>{labels.labelSubjectDescription}</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>

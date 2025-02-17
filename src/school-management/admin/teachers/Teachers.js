@@ -5,6 +5,9 @@ import { Container, TextField, Button, Typography, Box, Paper, Table, TableBody,
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useSelector, useDispatch } from 'react-redux';
 import { addTeacher } from '../../redux/teacherSlice';
+import messages from "../../utility/messages";
+import labels from "../../utility/labels";
+
 const Teachers = () => {
     const dispatch = useDispatch();
     const [formData, setFormData] = useState({
@@ -30,12 +33,12 @@ const Teachers = () => {
 
     const validate = () => {
         let tempErrors = {};
-        tempErrors.fullName = formData.fullName ? "" : "Full Name is required!";
-        tempErrors.description = formData.description ? "" : "Description is required!";
-        tempErrors.email = /\S+@\S+\.\S+/.test(formData.email) ? "" : "Valid email is required!";
-        tempErrors.phone = formData.phone ? "" : "Phone Number is required!";
-        tempErrors.username = formData.username ? "" : "Username is required!";
-        tempErrors.password = formData.password.length >= 6 ? "" : "Password must be at least 6 characters!";
+        tempErrors.fullName = formData.fullName ? "" : messages.teacherFullName;
+        tempErrors.description = formData.description ? "" : messages.teacherDescription;
+        tempErrors.email = /\S+@\S+\.\S+/.test(formData.email) ? "" : messages.teacherEmailID;
+        tempErrors.phone = formData.phone ? "" : messages.teacherPhone;
+        tempErrors.username = formData.username ? "" : messages.teacherUsername;
+        tempErrors.password = formData.password.length >= 6 ? "" : messages.teacherPassword;
 
         setErrors(tempErrors);
         return Object.values(tempErrors).every((x) => x === "");
@@ -44,7 +47,7 @@ const Teachers = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (validate()) {
-            alert("Registration Successful! ✅");
+            alert(messages.registrationSuccess);
             dispatch(addTeacher({...formData}));
             setFormData({ fullName: "", description:"", email: "", phone: "", username:"", password: "" });
         }
@@ -54,12 +57,12 @@ const Teachers = () => {
         <Container sx={{marginTop: 5}}>
             <Paper elevation={10} sx={{ padding: 5, textAlign: "center", maxWidth: 400, margin:"auto" }}>
                 <Typography variant="h5" gutterBottom>
-                    Teacher Registration
+                   {labels.labelTeacherRegistration}
                 </Typography>
                 <form onSubmit={handleSubmit}>
                     <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
                         <TextField
-                            label="Full Name"
+                            label={labels.labelTeacherFullName}
                             variant="outlined"
                             name="fullName"
                             fullWidth
@@ -69,7 +72,7 @@ const Teachers = () => {
                             helperText={errors.fullName}
                         />
                         <TextField
-                            label="Description"
+                            label={labels.labelTeacherDescription}
                             variant="outlined"
                             name="description"
                             fullWidth
@@ -79,7 +82,7 @@ const Teachers = () => {
                             helperText={errors.description}
                         />
                         <TextField
-                            label="Email"
+                            label={labels.labelTeacherEmail}
                             variant="outlined"
                             name="email"
                             fullWidth
@@ -89,7 +92,7 @@ const Teachers = () => {
                             helperText={errors.email}
                         />
                         <TextField
-                            label="Phone"
+                            label={labels.labelTeacherPhone}
                             variant="outlined"
                             name="phone"
                             fullWidth
@@ -99,7 +102,7 @@ const Teachers = () => {
                             helperText={errors.phone}
                         />
                         <TextField
-                            label="Username"
+                            label={labels.labelTeacherUsername}
                             variant="outlined"
                             name="username"
                             fullWidth
@@ -109,7 +112,7 @@ const Teachers = () => {
                             helperText={errors.username}
                         />
                         <TextField
-                            label="Password"
+                            label={labels.labelTeacherPassword}
                             variant="outlined"
                             type={showPassword ? "text" : "password"} // Toggle input type
                             name="password"
@@ -129,7 +132,7 @@ const Teachers = () => {
                             helperText={errors.password}
                         />
                         <Button type="submit" variant="contained" color="primary" fullWidth>
-                            Register
+                            {labels.btnRegister}
                         </Button>
                     </Box>
                 </form>
@@ -140,12 +143,12 @@ const Teachers = () => {
                     <Table>
                         <TableHead>
                             <TableRow sx={{ backgroundColor: "#1976d2" }}>
-                                <TableCell sx={{ color: "white" }}>Full Name</TableCell>
-                                <TableCell sx={{ color: "white" }}>Description</TableCell>
-                                <TableCell sx={{ color: "white" }}>Email</TableCell>
-                                <TableCell sx={{ color: "white" }}>Phone</TableCell>
-                                <TableCell sx={{ color: "white" }}>Username</TableCell>
-                                <TableCell sx={{ color: "white" }}>Password</TableCell>
+                                <TableCell sx={{ color: "white" }}>{labels.labelTeacherFullName}</TableCell>
+                                <TableCell sx={{ color: "white" }}>{labels.labelTeacherDescription}</TableCell>
+                                <TableCell sx={{ color: "white" }}>{labels.labelTeacherEmail}</TableCell>
+                                <TableCell sx={{ color: "white" }}>{labels.labelTeacherPhone}</TableCell>
+                                <TableCell sx={{ color: "white" }}>{labels.labelTeacherUsername}</TableCell>
+                                <TableCell sx={{ color: "white" }}>{labels.labelTeacherPassword}</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
